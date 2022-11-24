@@ -178,7 +178,7 @@ const updateStudent = ()=>{
 
         if(confirm)
         {
-            storage &&
+            tableRowIndex &&
             storage.splice(tableRowIndex ,1,{
                 name,
                 age,
@@ -200,4 +200,36 @@ const updateStudent = ()=>{
     }
 
    
+}
+
+
+const deleteStudent = ()=>{
+
+    let storage  = JSON.parse(localStorage.getItem("studentList"));
+    let confirm = window.confirm("Are you want to delete the student Record?")
+    if(confirm)
+    {
+
+        let tableRowIndex = rowIndex ;
+
+
+
+        if(tableRowIndex-- )
+        {
+        tableRowIndex &&    
+        storage.splice(tableRowIndex , 1);
+        localStorage.setItem("studentList", JSON.stringify(storage));
+
+        window.alert(`Record has been deleted ${tableRowIndex}`);
+        window.location.reload();
+        }
+        else{
+            return;
+        }
+
+    }
+    else{
+        return;
+    }
+
 }
