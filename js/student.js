@@ -58,3 +58,63 @@ const addStudent = () =>{
 
 
 }
+
+
+const tableHead = data =>{
+    let objectsKeys;
+    for ( let items of data)
+    {
+        objectsKeys = Object.keys(items);
+
+    }
+
+    let row = document.createElement("tr");
+    for(let key of objectsKeys){
+
+        let heading = document.createElement("th");
+        heading.innerHTML = key;
+        row.appendChild(heading);
+
+    }
+    thead.appendChild(row);
+    table.appendChild(thead);
+
+}
+
+
+const tableBody = data =>{
+
+    for(let items of data)
+    {
+        let objectValues = Object.values(items);
+        let row = document.createElement("tr");
+        for(let values of objectValues)
+        {
+            let cell = document.createElement("td");
+            cell.innerHTML = values;
+            row.appendChild(cell);
+        }
+        tbody.appendChild(row);
+    }
+    table.appendChild(tbody);
+    console.log(table);
+
+        }
+    
+
+
+
+
+const getStudent = () =>{
+    const storage = JSON.parse(localStorage.getItem("studentList"));
+    if(storage && storage.length >= 1)
+    {
+        if(table.rows.length <1)
+        {
+            tableHead(storage);
+            tableBody(storage);
+        }
+    }
+
+}
+
