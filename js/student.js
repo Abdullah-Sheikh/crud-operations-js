@@ -19,6 +19,23 @@ const addStudent = () =>{
 
     array.push(formData);
 
+    if(name ==="") {
+        alert("Name can not be left empty");
+        document.querySelector("#name").focus();
+        return;
+    }
+    if(age===""){
+
+        alert("Age can not be left empty");
+        document.querySelector("#age").focus();
+        return;
+    }
+    if(city === ""){
+        alert("City can not be left empty");
+        document.querySelector("#city").focus();
+        return;
+    }
+
     try {
 
         if(localStorage.getItem("studentList") == null)
@@ -37,7 +54,7 @@ const addStudent = () =>{
         console.log(error)
         
     }
-   // console.log(array);
+  
 
 
 }
